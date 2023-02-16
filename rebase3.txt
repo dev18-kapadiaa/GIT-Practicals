@@ -1,0 +1,22 @@
+Additional rebase commands
+As detailed in the rewriting history page, rebasing can be used to change older and multiple commits, committed files, and multiple messages. While these are the most common applications, git rebase also has additional command options that can be useful in more complex applications.
+
+git rebase -- d means during playback the commit will be discarded from the final combined commit block.
+git rebase -- p leaves the commit as is. It will not modify the commit's message or content and will still be an individual commit in the branches history.
+git rebase -- x during playback executes a command line shell script on each marked commit. A useful example would be to run your codebase's test suite on specific commits, which may help identify regressions during a rebase.
+Recap
+Interactive rebasing gives you complete control over what your project history looks like. This affords a lot of freedom to developers, as it lets them commit a "messy" history while they're focused on writing code, then go back and clean it up after the fact.
+
+Most developers like to use an interactive rebase to polish a feature branch before merging it into the main code base. This gives them the opportunity to squash insignificant commits, delete obsolete ones, and make sure everything else is in order before committing to the “official” project history. To everybody else, it will look like the entire feature was developed in a single series of well-planned commits.
+
+The real power of interactive rebasing can be seen in the history of the resulting main branch. To everybody else, it looks like you're a brilliant developer who implemented the new feature with the perfect amount of commits the first time around. This is how interactive rebasing can keep a project's history clean and meaningful.
+
+Configuration options
+There are a few rebase properties that can be set using git config. These options will alter the git rebase output look and feel.
+
+rebase.stat: A boolean that is set to false by default. The option toggles display of visual diffstat content that shows what changed since the last rebase.
+rebase.autoSquash: A boolean value that toggles the --autosquash behavior.
+rebase.missingCommitsCheck: Can be set to multiple values which change rebase behavior around missing commits.
+
+Advanced rebase application
+The command line argument --onto can be passed to git rebase. When in git rebase --onto mode the command expands to:
